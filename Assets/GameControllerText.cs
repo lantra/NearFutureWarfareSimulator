@@ -26,22 +26,10 @@ public class GameControllerText : MonoBehaviour {
         ActiveShips.Add(ship3);
         NSShip ship4 = NSShipFactory.createVenomLightCruiser("RRN Skylark", FAC1);
         ActiveShips.Add(ship4);
-        NSShip ship5 = NSShipFactory.createSeagullDestroyer("RRN ANavalHero", FAC1);
+        NSShip ship5 = NSShipFactory.createSeagullDestroyer("BCN ANavalHero", FAC2);
         ActiveShips.Add(ship5);
-        NSShip ship6 = NSShipFactory.createSeagullDestroyer("RRN AState", FAC1);
-        ActiveShips.Add(ship6);
-        NSShip ship7 = NSShipFactory.createSeagullDestroyer("RRN Aplace", FAC1);
-        ActiveShips.Add(ship7);
-        NSShip ship8 = NSShipFactory.createSeagullDestroyer("RRN Acity", FAC1);
-        ActiveShips.Add(ship8);
-        NSShip ship9 = NSShipFactory.createSeagullDestroyer("BCN Leeroy", FAC2);
+        NSShip ship9 = NSShipFactory.createCarrierKillerBattleship("RRN Victory", FAC1);
         ActiveShips.Add(ship9);
-        NSShip ship10 = NSShipFactory.createSeagullDestroyer("BCN Balthazaar", FAC2);
-        ActiveShips.Add(ship10);
-        NSShip ship11 = NSShipFactory.createSeagullDestroyer("BCN Diablo", FAC2);
-        ActiveShips.Add(ship11);
-        NSShip ship12 = NSShipFactory.createSeagullDestroyer("BCN Azomodan", FAC2);
-        ActiveShips.Add(ship12);
 
 
 	

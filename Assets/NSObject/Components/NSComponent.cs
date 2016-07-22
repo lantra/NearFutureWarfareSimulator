@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NSComponent : ScriptableObject {
+public class NSComponent : Object {
 
     public string ComponentName;
     public float ComponentHP, ComponentArmor, ComponentMaxHP;

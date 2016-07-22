@@ -24,7 +24,7 @@ public class NSMissleFactory : MonoBehaviour {
 
     public static NSMissle createBoltCM(string faction)
     {
-        NSMissle missle = new NSMissle("Bolt CM", faction, "Bolt CM", 65, 2.0F, 150, 15, 400);
+        NSMissle missle = new NSMissle("Bolt CM", faction, "Bolt CM", 65, 2.0F, 150, 30, 400);
         return missle;
     }
 

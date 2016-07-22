@@ -100,30 +100,7 @@ public class NSShip : NSObject
         { takeDamage(gun.getDamageValue()); }//hull hit
         else
         {
-            {
-                if (!(components.Count == 0))
-                {
-                    int cdRoll = Random.Range(0, components.Count - 1);  //turn into it's own method
-                    NSComponent CurrentComponent = (NSComponent)components[cdRoll];
-                    GameControllerText.addMessage(CurrentComponent.ComponentName + " has been hit!");
-                    if (CurrentComponent.TakeDamage(gun.getDamageValue()));
-                    {
-                        destroyedComponents.Add(CurrentComponent);
-                        components.RemoveAt(cdRoll);
-                        GameControllerText.addMessage(CurrentComponent.ComponentName + " has been destroyed!");
-
-                        if (CurrentComponent is NSWeaponC)
-                        {
-                            NSWeaponC CurrentWeapon = (NSWeaponC)CurrentComponent;
-                            if (CurrentWeapon.Ammo > 0) //WEAPONSYSTEM GO BOOM
-                            {
-                                GameControllerText.addMessage(CurrentComponent.ComponentName + " munitions have blown up on " + this.Name + "!");
-                                takeDamage(gun.getDamageValue() + hitSeverity(gun.getDamageValue()));
-                            }
-                        }
-                    }
-                }
-            }
+            ComponentDamage(gun.getDamageValue());
         }
     }
 
@@ -145,37 +122,13 @@ public class NSShip : NSObject
         else if (roll < 80)
         {
             GameControllerText.addMessage(missle.Name + " has hit the waterline of " + this.Name + "!");
+            takeDamage((missle.getDamageValue() + hitSeverity(missle.getDamageValue())*2));
+
         }
 
         else if (roll < 100) //COmponent hits
         {
-            if (! (components.Count == 0))
-            {
-                int cdRoll = Random.Range(0, components.Count - 1);
-                NSComponent CurrentComponent = (NSComponent)components[cdRoll];
-                GameControllerText.addMessage(CurrentComponent.ComponentName + " has been hit!");
-                if (CurrentComponent.TakeDamage(missle.getDamageValue()))
-                {
-                    destroyedComponents.Add(CurrentComponent);
-                    components.RemoveAt(cdRoll);
-                    GameControllerText.addMessage(CurrentComponent.ComponentName + " has been destroyed!");
-
-                    if (CurrentComponent is NSWeaponC)
-                    {
-                        NSWeaponC CurrentWeapon = (NSWeaponC) CurrentComponent;
-                        if (CurrentWeapon.Ammo > 0) //WEAPONSYSTEM GO BOOM
-                        {
-                            GameControllerText.addMessage(CurrentComponent.ComponentName +  " munitions have blown up on " + this.Name + "!");
-                            takeDamage(missle.getDamageValue() + hitSeverity(missle.getDamageValue()));
-                        }
-                    }
-               }
-            }
-            else
-            {
-                GameControllerText.addMessage(missle.Name + " has hit the hull of " + this.Name + "!");
-                takeDamage(missle.getDamageValue() + hitSeverity(missle.getDamageValue()));
-            }
+            ComponentDamage(missle.getDamageValue()  + hitSeverity(missle.getDamageValue()));
             //Bridge Hits are special, and will have a special way to determine their hits here, Bridge MAy not be connected to component class
 
         }
@@ -185,5 +138,38 @@ public class NSShip : NSObject
             GameControllerText.sinkShip(this);
         }
         
+    }
+
+public void ComponentDamage(float incDamage)
+    {
+        if (!(components.Count == 0))
+        {
+            int cdRoll = Random.Range(0, components.Count - 1);
+            NSComponent CurrentComponent = (NSComponent)components[cdRoll];
+            GameControllerText.addMessage(CurrentComponent.ComponentName + " has been hit!");
+            if (CurrentComponent.TakeDamage(incDamage))
+            {
+                destroyedComponents.Add(CurrentComponent);
+                components.RemoveAt(cdRoll);
+                GameControllerText.addMessage(CurrentComponent.ComponentName + " has been destroyed!");
+
+                if (CurrentComponent is NSWeaponC)
+                {
+                    NSWeaponC CurrentWeapon = (NSWeaponC)CurrentComponent;
+                    if (CurrentWeapon.Ammo > 0) //WEAPONSYSTEM GO BOOM
+                    {
+                        GameControllerText.addMessage(CurrentComponent.ComponentName + " munitions have blown up on " + this.Name + "!");
+                        takeDamage(incDamage);
+                    }
+                }
+            }
+        }
+        else
+        {
+            takeDamage(incDamage);
+        }
+        //Bridge Hits are special, and will have a special way to determine their hits here, Bridge MAy not be connected to component class
+
+
     }
 }
