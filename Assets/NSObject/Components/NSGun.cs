@@ -34,17 +34,22 @@ public class NSGun : NSWeaponC
 
     public void FireFullBurst (NSShip target)
     {
-        int hits = 0;
-        for (int i = 0; i < rOF; i++)
+        if (Ammo > rOF)
         {
-            int roll = Random.Range(0, 100);
-            if (roll > accuarcy + GameControllerText.ECM_FACTOR)
+            int hits = 0;
+            for (int i = 0; i < rOF; i++)
             {
-                hits += 1;
-                target.conventionalWeaponHit(this);
+                int roll = Random.Range(0, 100);
+                if (roll > accuarcy + GameControllerText.ECM_FACTOR)
+                {
+                    hits += 1;
+                    target.conventionalWeaponHit(this);
+                }
             }
+            Ammo -= rOF;
+            GameControllerText.addMessage(ComponentName + " has hit " + hits.ToString() + "times!");
         }
-        GameControllerText.addMessage(ComponentName + " has hit " + hits.ToString() + "times!");
+        else { GameControllerText.addMessage(this.ComponentName + " is out of Ammo!"); }
     }
 
     public float getDamageValue()

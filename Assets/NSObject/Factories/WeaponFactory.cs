@@ -13,10 +13,10 @@ public class WeaponFactory : MonoBehaviour
             return newGun;
         }
 
-            public static NSGun CreateMKV300mm()
+            public static NSGun CreateMKV407mm()
         {
 
-            NSGun newGun = new NSGun("Mark V 350mm Gun", 10, 4, 80, 30, 125F, 6, .92F, 20, 35, 12);
+            NSGun newGun = new NSGun("Mark V 407mm Gun", 10, 4, 80, 30, 862F, 3, .82F, 16, 30, 16);
             return newGun;
         }
 

@@ -39,9 +39,9 @@ public class NSShipFactory : MonoBehaviour {
     public static NSShip createCarrierKillerBattleship(string name, string faction)
     {
         ArrayList componentList = new ArrayList();
-        componentList.Add(WeaponFactory.CreateMKV300mm());
-        componentList.Add(WeaponFactory.CreateMKV300mm());
-        componentList.Add(WeaponFactory.CreateMKV300mm());
+        componentList.Add(WeaponFactory.CreateMKV407mm());
+        componentList.Add(WeaponFactory.CreateMKV407mm());
+        componentList.Add(WeaponFactory.CreateMKV407mm());
         componentList.Add(WeaponFactory.CreateBallistaCMLauncher(4, 1, faction));
         componentList.Add(WeaponFactory.CreateBallistaCMLauncher(4, 1, faction));
 
