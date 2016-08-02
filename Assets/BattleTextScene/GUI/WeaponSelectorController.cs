@@ -25,10 +25,13 @@ public class WeaponSelectorController : MonoBehaviour {
         if (obj is NSShip)
         {
             NSShip Ship = (NSShip)obj;
-            foreach (NSWeaponC weapon in Ship.components)
+            foreach (NSComponent weapon in Ship.components)
             {
-                WeaponSystems.Add(weapon);
-                ComponentName.Add(weapon.ComponentName);
+                if (weapon is NSWeaponC)
+                {
+                    WeaponSystems.Add(weapon);
+                    ComponentName.Add(weapon.ComponentName);
+                }
             }
             UnityEngine.UI.Dropdown dropdown = GetComponent<Dropdown>();
             dropdown.ClearOptions();

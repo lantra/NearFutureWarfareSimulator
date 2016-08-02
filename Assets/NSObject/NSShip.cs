@@ -8,7 +8,6 @@ public class NSShip : NSObject
     public int damagecontrolrating; //abstraction o fhoow good the crew is at fixing the ship
     public ArrayList components = new ArrayList();
     public ArrayList destroyedComponents = new ArrayList();
-    public int topSpeed; // the top speed in kph
     public float overallHull; //the percentages of intacthull.
     public int crew; //The ammount of crew on board
     public string captain; //a place holder for a future feature TODO: Add in captains
@@ -17,14 +16,13 @@ public class NSShip : NSObject
     public bool aegisOnline;
     public bool sunk;
 
-    public NSShip(string n, string f, string tN, int drc, ArrayList compArray, int ts, float a, int s, int crw)
+    public NSShip(string n, string f, string tN, int drc, ArrayList compArray, float a, int s, int crw)
     {
         Name = n;
         Faction = f;
         typeName = tN;
         damagecontrolrating = drc;
         components = compArray;
-        topSpeed = ts;
         armor = a;
         size = s;
         waterlevel = 0F;
@@ -38,6 +36,23 @@ public class NSShip : NSObject
     public bool checkAegisSystems()
     { /*will be used for aegis targeting in later versions*/
         return aegisOnline;
+    }
+
+    public float getTopSpeed()
+    {
+        float ts = 0; 
+
+        foreach (NSComponent component in components)
+        {
+            if (component is NSCEngine)
+
+            {
+                NSCEngine engine = (NSCEngine)component;
+                ts =  engine.getSpeed(); 
+            }
+        }
+
+        return ts;
     }
 
     public void takeDamage (float incomingDamage)

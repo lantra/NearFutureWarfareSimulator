@@ -44,7 +44,7 @@ public class ShipViewController : MonoBehaviour {
                 controller.ShipFaction.text = ship.Faction;
                 controller.ShipHull.text = "HL: " + ((int)ship.overallHull).ToString() + "%";
                 controller.ShipWaterLevel.text = "WL: " + ((int)ship.waterlevel).ToString() + "%";
-                controller.ShipTopSpeed.text = "Top Speed: " + ship.topSpeed.ToString() + " KM/S";
+                controller.ShipTopSpeed.text = "Top Speed: " + ((int)ship.getTopSpeed()).ToString() + " KM/S";
 
 
 

@@ -20,7 +20,8 @@ public class NSShipFactory : MonoBehaviour {
         componentlist.Add(WeaponFactory.CreateBallistaCMLauncher(4,1,faction));
         componentlist.Add(WeaponFactory.CreateVenomSTSLauncher(36, 2, faction));
         componentlist.Add(WeaponFactory.CreateVenomSTSLauncher(36, 2, faction));
-        NSShip ship = new NSShip(name, faction, "Venom LMC", 5, componentlist, 40, 2.5F, 173, 523);
+        componentlist.Add(NSEngineFactory.createMKIIIGasEngines());
+        NSShip ship = new NSShip(name, faction, "Venom LMC", 5, componentlist, 2.5F, 173, 523);
         
         return ship;
     }
@@ -31,7 +32,9 @@ public class NSShipFactory : MonoBehaviour {
         componentlist.Add(WeaponFactory.CreateMKIV127());
         componentlist.Add(WeaponFactory.CreateMKIV127());
         componentlist.Add(WeaponFactory.CreateBoltCruiseMissleLauncher(2,2, faction));
-        NSShip ship = new NSShip(name, faction, "Seagull Destroyer", 5, componentlist, 56, 1.5F, 155, 303);
+        componentlist.Add(NSEngineFactory.createMKIVGasEngines());
+
+        NSShip ship = new NSShip(name, faction, "Seagull Destroyer", 5, componentlist, 1.5F, 155, 303);
 
         return ship;
     }
@@ -44,8 +47,10 @@ public class NSShipFactory : MonoBehaviour {
         componentList.Add(WeaponFactory.CreateMKV407mm());
         componentList.Add(WeaponFactory.CreateBallistaCMLauncher(4, 1, faction));
         componentList.Add(WeaponFactory.CreateBallistaCMLauncher(4, 1, faction));
+        componentList.Add(NSEngineFactory.createHBONuclearEngine());
 
-        NSShip ship = new NSShip(name, faction, "Carrier Killer Battleship", 10, componentList, 45, 8, 220, 893);
+
+        NSShip ship = new NSShip(name, faction, "Carrier Killer Battleship", 10, componentList, 8, 220, 893);
 
         return ship;
     }
